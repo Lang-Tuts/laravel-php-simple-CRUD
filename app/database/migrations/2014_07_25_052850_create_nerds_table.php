@@ -11,11 +11,25 @@ class CreateNerdsTable extends Migration {
 	 * @return void
 	 */
 	public function up()
-	{
-		Schema::table('nerds', function(Blueprint $table)
+    {
+        Schema::create('nerds', function(Blueprint $table)
+                    {
+                        $table->increments('id');
+                        
+                        $table->string('name', 255);
+                        $table->string('email', 255);
+                        $table->integer('nerd_level');
+                        
+                        $table->timestamps();
+                                });
+/*		Schema::table('nerds', function(Blueprint $table)
 		{
-			
-		});
+            $table->increments('id');
+            $table->string('name',255);
+            $table->string('email',255);
+            $table->integer('nerd_level');
+            $table->timestamps();    
+        });*/
 	}
 
 	/**
@@ -25,10 +39,11 @@ class CreateNerdsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('nerds', function(Blueprint $table)
+        Schema::drop('nerds');
+	/*	Schema::table('nerds', function(Blueprint $table)
 		{
 			//
-		});
+        });*/
 	}
 
 }
